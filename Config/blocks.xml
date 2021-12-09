@@ -5,7 +5,7 @@
 		<block name="ocbPushButton01">
 
 			<property name="CreativeMode" value="Player"/>
-			<property name="Class" value="ButtonPush, Harmony-ElectricityButtonsPush"/>
+			<property name="Class" value="ButtonPush, ElectricityButtonsPush"/>
 			<property name="CustomIcon" value="PushButton01"/>
 			<property name="Shape" value="ModelEntity" />
 			<property name="Model" value="#@modfolder:Resources/ButtonsPush.unity3d?PushButton1" />

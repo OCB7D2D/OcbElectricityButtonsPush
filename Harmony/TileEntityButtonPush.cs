@@ -1,7 +1,3 @@
-using System.IO;
-using System.Reflection;
-using DMT;
-using HarmonyLib;
 using UnityEngine;
 
 public class TileEntityButtonPush : TileEntityPoweredTrigger
@@ -87,7 +83,8 @@ public class TileEntityButtonPush : TileEntityPoweredTrigger
             else if (hasClientToggle) root.HandleClientToggle();
             else if (hasConfigChange) root.SetModifiedCircuit(this);
         }
-        else if (_eStreamMode == TileEntity.StreamModeRead.FromServer) {
+        else if (_eStreamMode == TileEntity.StreamModeRead.FromServer)
+        {
             this.ClientData.Property1 = _br.ReadByte();
             this.ClientData.Property2 = _br.ReadByte();
             serverTriggered = _br.ReadBoolean();

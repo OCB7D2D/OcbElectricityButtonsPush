@@ -1,9 +1,3 @@
-using DMT;
-using System.IO;
-using HarmonyLib;
-using UnityEngine;
-using System.Reflection;
-
 public class BlockButtonPush : BlockPowered
 {
 
@@ -62,7 +56,7 @@ public class BlockButtonPush : BlockPowered
     {
         TileEntityButtonPush tileEntity = _world.GetTileEntity(_clrIdx, _blockPos) as TileEntityButtonPush;
         PlayerActionsLocal playerInput = ((EntityPlayerLocal) _entityFocusing).playerInput;
-        if (tileEntity == null) return "{No tile entitiy}";
+        if (tileEntity == null) return "{No tile entity}";
         return Localization.Get("ocbBlockPushPowerButton");
     }
 
@@ -104,12 +98,11 @@ public class BlockButtonPush : BlockPowered
     {
         if (_blockValue.ischild)
         {
-        Vector3i parentPos = Block.list[_blockValue.type].multiBlockPos.GetParentPos(_blockPos, _blockValue);
-        BlockValue block = _world.GetBlock(parentPos);
-        return this.OnBlockActivated(cmd, _world, _cIdx, parentPos, block, _player);
+            Vector3i parentPos = Block.list[_blockValue.type].multiBlockPos.GetParentPos(_blockPos, _blockValue);
+            BlockValue block = _world.GetBlock(parentPos);
+            return this.OnBlockActivated(cmd, _world, _cIdx, parentPos, block, _player);
         }
-        if (!(_world.GetTileEntity(_cIdx, _blockPos) is TileEntityButtonPush tileEntity))
-        return false;
+        if (!(_world.GetTileEntity(_cIdx, _blockPos) is TileEntityButtonPush tileEntity)) return false;
         // Will only work on server (includes SinglePlayer)
         tileEntity = tileEntity.GetPushButtonCircuitRoot();
         if (cmd == 0)

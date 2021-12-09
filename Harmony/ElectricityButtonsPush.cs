@@ -1,20 +1,15 @@
-using System.IO;
 using System.Reflection;
-using DMT;
 using HarmonyLib;
 using UnityEngine;
 
-public class OcbElectricityButtonsPush
+public class ElectricityNoWires : IModApi
 {
-    // Entry class for Harmony patching
-    public class OcbElectricityButtonsPush_Init : IHarmony
+
+    public void InitMod(Mod mod)
     {
-        public void Start()
-        {
-            Debug.Log("Loading OCB Push Button Circuit Patch: " + GetType().ToString());
-            var harmony = new Harmony(GetType().ToString());
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
-        }
+        Debug.Log("Loading OCB Push Button Circuit Patch: " + GetType().ToString());
+        var harmony = new Harmony(GetType().ToString());
+        harmony.PatchAll(Assembly.GetExecutingAssembly());
     }
 
     [HarmonyPatch(typeof (TileEntity))]
@@ -58,8 +53,7 @@ public class OcbElectricityButtonsPush
             TileEntity ___tileEntity,
             XUiController ___pnlTargeting)
         {
-            // var stats = __instance.GetChildById("stats");
-            if (___tileEntity is TileEntityButtonPush pushbtn) {
+            if (___tileEntity is TileEntityButtonPush) {
                 ___pnlTargeting.ViewComponent.IsVisible = false;
             } else {
                 ___pnlTargeting.ViewComponent.IsVisible = true;

@@ -156,8 +156,8 @@ public class TileEntityButtonPush : TileEntityPoweredTrigger
                 for (int index = 0; index < componentsInChildren.Length; ++index)
                 {
                     if (
-                        (Object) componentsInChildren[index].material !=
-                        (Object) componentsInChildren[index].sharedMaterial
+                        componentsInChildren[index].material !=
+                        componentsInChildren[index].sharedMaterial
                     ) {
                         componentsInChildren[index].material =
                             new Material(componentsInChildren[index]

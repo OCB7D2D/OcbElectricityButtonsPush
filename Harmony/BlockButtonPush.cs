@@ -20,10 +20,10 @@ public class BlockButtonPush : BlockPowered
     {
         base.OnBlockAdded(_world, _chunk, _blockPos, _blockValue);
         if (_world.GetTileEntity(_chunk.ClrIdx, _blockPos) is TileEntityButtonPush) return;
-        TileEntityPowered tileEntity = this.CreateTileEntity(_chunk);
+        TileEntityPowered tileEntity = CreateTileEntity(_chunk);
         tileEntity.localChunkPos = World.toBlock(_blockPos);
         tileEntity.InitializePowerData();
-        _chunk.AddTileEntity((TileEntity) tileEntity);
+        _chunk.AddTileEntity(tileEntity);
         (tileEntity as TileEntityButtonPush).UpdateEmissionColor(null);
     }
 
@@ -41,10 +41,12 @@ public class BlockButtonPush : BlockPowered
 
     public override TileEntityPowered CreateTileEntity(Chunk chunk)
     {
-        TileEntityButtonPush entityPoweredTrigger = new TileEntityButtonPush(chunk);
-        entityPoweredTrigger.PowerItemType =  (PowerItem.PowerItemTypes) 243;
-        entityPoweredTrigger.TriggerType = PowerTrigger.TriggerTypes.Motion;
-        return (TileEntityPowered) entityPoweredTrigger;
+        TileEntityButtonPush entityPoweredTrigger = new TileEntityButtonPush(chunk)
+        {
+            PowerItemType = (PowerItem.PowerItemTypes)243,
+            TriggerType = PowerTrigger.TriggerTypes.Motion
+        };
+        return entityPoweredTrigger;
     }
 
     public override string GetActivationText(
@@ -54,9 +56,7 @@ public class BlockButtonPush : BlockPowered
         Vector3i _blockPos,
         EntityAlive _entityFocusing)
     {
-        TileEntityButtonPush tileEntity = _world.GetTileEntity(_clrIdx, _blockPos) as TileEntityButtonPush;
-        PlayerActionsLocal playerInput = ((EntityPlayerLocal) _entityFocusing).playerInput;
-        if (tileEntity == null) return "{No tile entity}";
+        if (!(_world.GetTileEntity(_clrIdx, _blockPos) is TileEntityButtonPush)) return "{No tile entity}";
         return Localization.Get("ocbBlockPushPowerButton");
     }
 
@@ -107,24 +107,33 @@ public class BlockButtonPush : BlockPowered
         tileEntity = tileEntity.GetPushButtonCircuitRoot();
         if (cmd == 0)
         {
-            PowerTrigger item = tileEntity.GetPowerItem() as PowerTrigger;
-            if (item == null) 
+            if (tileEntity.GetPowerItem() is PowerTrigger item)
+            {
+                if (item.TriggerPowerDuration == PowerTrigger.TriggerPowerDurationTypes.Triggered)
+                {
+                    item.TriggerPowerDuration = PowerTrigger.TriggerPowerDurationTypes.Always;
+                }
+                if (item.TriggerPowerDuration == PowerTrigger.TriggerPowerDurationTypes.Always)
+                {
+                    if (item.IsActive)
+                    {
+                        tileEntity.ResetTrigger();
+                    }
+                    else
+                    {
+                        tileEntity.IsTriggered = !tileEntity.IsTriggered;
+                    }
+                }
+                else
+                {
+                    tileEntity.IsTriggered = !tileEntity.IsTriggered;
+                }
+            }
+            else
             {
                 tileEntity.hasToggle = true;
                 tileEntity.SetModified();
                 return true;
-            }
-            else if (item.TriggerPowerDuration == PowerTrigger.TriggerPowerDurationTypes.Always) 
-            {
-                if (item.IsActive) {
-                    tileEntity.ResetTrigger();
-                }
-                else {
-                    tileEntity.IsTriggered = !tileEntity.IsTriggered;
-                }
-            }
-            else {
-                tileEntity.IsTriggered = !tileEntity.IsTriggered;
             }
             UpdateStates(_world, _cIdx, tileEntity);
         }
@@ -137,7 +146,7 @@ public class BlockButtonPush : BlockPowered
         }
         else if (cmd == 2)
         {
-            this.TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
+            TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
         }
         else {
             return false;

@@ -22,19 +22,36 @@ need to put them in sequence, all belong to the same root trigger.
 
 [![GitHub CI Compile Status][3]][2]
 
-### Download and Install
+## Download and Install
 
 Simply [download here from GitHub][1] and put into your A20 Mods folder:
 
-- https://github.com/OCB7D2D/ElectricityButtonsPush/archive/master.zip
+- https://github.com/OCB7D2D/ElectricityButtonsPush/archive/master.zip (master branch)
+
+## Developer Notes
+
+It took me some time to figure out how to properly support multiplayer and
+this section tries to explain a bit what was involved to get it working.
+You can either run a server dedicated or people can join your own game.
+In the second case, your own player is basically running on the server,
+while every other client needs to get most information from remote.
+Powered blocks will have a PowerItem on the server side that is always
+loaded and ticked, while on client side this info has to be transmitted
+from the server. Furthermore PowerItem can hold additional data, that
+can't be easily stored on the client side. Powered Tile Entities use
+often a `ClientData` field to hold this information on pure clients.
 
 ## Changelog
+
+### Version 0.6.0
+
+- Refactored code for cleaner multiplayer support
+- Fixes multiplayer hosted from single player game
 
 ### Version 0.5.1
 
 - Fixed description in localization
 - Automated deployment and release packaging
-
 
 ### Version 0.5.0
 

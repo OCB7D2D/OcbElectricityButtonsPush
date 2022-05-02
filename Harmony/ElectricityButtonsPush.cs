@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
@@ -11,14 +12,16 @@ public class ElectricityNoWires : IModApi
         harmony.PatchAll(Assembly.GetExecutingAssembly());
     }
 
-    [HarmonyPatch(typeof (TileEntity))]
+    [HarmonyPatch(typeof(TileEntity))]
     [HarmonyPatch("Instantiate")]
     public class TileEntity_Instantiate
     {
-        public static bool
-        Prefix(ref TileEntity __result, TileEntityType type, Chunk _chunk)
+        public static bool Prefix(
+            ref TileEntity __result,
+            TileEntityType type,
+            Chunk _chunk)
         {
-            if (type == (TileEntityType) 243)
+            if (type == TileEntityButtonPush.Type)
             {
                 __result = new TileEntityButtonPush(_chunk);
                 return false;
@@ -27,19 +30,43 @@ public class ElectricityNoWires : IModApi
         }
     }
 
-    [HarmonyPatch(typeof (PowerTrigger))]
-    [HarmonyPatch("HandleDisconnectChildren")]
-    public class PowerTrigger_HandleDisconnect
+    [HarmonyPatch(typeof(PowerItem))]
+    [HarmonyPatch("CreateItem")]
+    public class PowerItem_CreateItem
     {
-        public static void Postfix(PowerTrigger __instance)
+        public static bool Prefix(
+            PowerItem.PowerItemTypes itemType,
+            ref PowerItem __result)
         {
-            if (__instance.TileEntity is TileEntityButtonPush pushbtn) {
-                if (GameManager.IsDedicatedServer) {
-                    pushbtn.SetModified();
-                }
-                else {
-                    pushbtn.UpdateEmissionColor(null);
-                }
+            if (itemType == PowerPushButton.Type)
+            {
+                __result = new PowerPushButton();
+                return false;
+            }
+            return true;
+        }
+    }
+
+
+    // Make sure we always lock root item
+    [HarmonyPatch(typeof(GameManager))]
+    [HarmonyPatch("TELockServer")]
+    public class GameManager_TELockServer
+    {
+        public static void Prefix(
+            World ___m_World,
+            int _clrIdx,
+            ref Vector3i _blockPos,
+            int _lootEntityId)
+        {
+            if (SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer)
+            {
+                TileEntity entity = _lootEntityId != -1 ?
+                    ___m_World.GetTileEntity(_lootEntityId) :
+                    ___m_World.GetTileEntity(_clrIdx, _blockPos);
+                if (!(entity is TileEntityButtonPush te)) return;
+                if (!(te.GetRootCircuitItem() is PowerPushButton root)) return;
+                if (root.TileEntity != null) _blockPos = root.Position;
             }
         }
     }

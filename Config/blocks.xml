@@ -4,12 +4,12 @@
 
 		<block name="ocbPushButton01">
 
+
 			<property name="CreativeMode" value="Player"/>
 			<property name="Class" value="ButtonPush, ElectricityButtonsPush"/>
 			<property name="CustomIcon" value="PushButton01"/>
 			<property name="Shape" value="ModelEntity" />
 			<property name="Model" value="#@modfolder:Resources/ButtonsPush.unity3d?PushButton1" />
-			<property name="DescriptionKey" value="ocbPushButtonDesc"/>
 			<property name="Mesh" value="models"/>
 
 			<property name="Material" value="Mmetal_weak"/>
@@ -27,7 +27,7 @@
 			<property name="EconomicValue" value="10"/>
 			<property name="EconomicBundleSize" value="10"/>
 
-			<property name="TriggerType" value="Switch"/>
+			<property name="TriggerType" value="Motion"/>
 			<property name="HandleFace" value="South"/>
 			<property name="WireOffset" value="0,0,-.5"/>
 
@@ -39,6 +39,7 @@
 			<drop event="Destroy" name="resourceScrapPolymers" count="1,2"/>
 
 			<property name="TakeDelay" value="5"/>
+			<property name="DisplayInfo" value="Custom"/>
 
 		</block>
 

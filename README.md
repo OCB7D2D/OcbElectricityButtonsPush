@@ -20,6 +20,8 @@ need to put them in sequence, all belong to the same root trigger.
 
 ![Simple Setup](Screens/in-game-simple-setup.jpg)
 
+[![GitHub CI Compile Status][3]][2]
+
 ### Download and Install
 
 Simply [download here from GitHub][1] and put into your A20 Mods folder:

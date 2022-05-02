@@ -1,5 +1,4 @@
-Key,File,Type,UsedInMainMenu,NoTranslate,english,Context / Alternate Text,german,latam,french,italian,japanese,koreana,polish,brazilian,russian,turkish,schinese,tchinese,spanish
-ocbPushButton01,UI,Menu,,,Push Button
-xuiLightOptions,UI,Menu,,,Light Options
-ocbPushButtonDesc,UI,Menu,,,"Directly adjacent push buttons form a push button circuits, as e.g. often seen in stair cases. Each button can trigger the group to either keep it on for another defined duration, or to toggle the consumers on and off.
-ocbBlockPushPowerButton,UI,HUD,,,Push Button,Schalter betätigen
+Key,File,Type,UsedInMainMenu,english,german
+ocbPushButton01,UI,Menu,,Push Button,Lichtschalter
+ocbPushButtonDesc,UI,Menu,,"Directly adjacent push buttons form a push button circuit, as e.g. often seen in stair cases. Each button can trigger the group to either keep it on for another defined duration, or to toggle the consumers on and off.","Direkt verbundene Lichtschalter formen eine Gruppe, wie man sie z.B. oft in Treppenhäusern findet. Jede Betätigung eines Schalters ändert den Zustand der ganzen Gruppe, welche entweder den Zeit-Countdown neu setzt oder die Gruppe Ein- und Ausschaltet."
+ocbBlockPushPowerButton,UI,HUD,,Push Button,Schalter betätigen

@@ -22,11 +22,17 @@ need to put them in sequence, all belong to the same root trigger.
 
 ### Download and Install
 
-Simply download here from GitHub and put into your A20 Mods folder:
+Simply [download here from GitHub][1] and put into your A20 Mods folder:
 
 - https://github.com/OCB7D2D/ElectricityButtonsPush/archive/master.zip
 
 ## Changelog
+
+### Version 0.5.1
+
+- Fixed description in localization
+- Automated deployment and release packaging
+
 
 ### Version 0.5.0
 
@@ -39,3 +45,7 @@ Simply download here from GitHub and put into your A20 Mods folder:
 ## Compatibility
 
 I've developed and tested this Mod against version a20.b218.
+
+[1]: https://github.com/OCB7D2D/ElectricityButtonsPush/releases
+[2]: https://github.com/OCB7D2D/ElectricityButtonsPush/actions/workflows/ci.yml
+[3]: https://github.com/OCB7D2D/ElectricityButtonsPush/actions/workflows/ci.yml/badge.svg

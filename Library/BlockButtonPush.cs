@@ -37,7 +37,6 @@ public class BlockButtonPush : BlockPowered
         bool isPowered, bool isEnabled, 
         BlockEntityData blockEntity)
     {
-        Log.Out("Update emission {0} {1}", isPowered, isEnabled);
         if (blockEntity != null &&
             blockEntity.transform != null &&
             blockEntity.transform.gameObject != null)

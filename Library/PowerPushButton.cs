@@ -113,8 +113,16 @@ public class PowerPushButton : PowerTrigger
                 // Disconnect if needed until next source
                 else if (!active && !(child is PowerSource))
                 {
-                    child.HandlePowerUpdate(false);
-                    child.HandleDisconnect();
+                    if (child is PowerTrigger trigger)
+                    {
+                        trigger.SetTriggeredByParent(false);
+                        trigger.HandleDisconnectChildren();
+                    }
+                    else
+                    {
+                        child.HandlePowerUpdate(false);
+                        child.HandleDisconnect();
+                    }
                 }
             }
         }

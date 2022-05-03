@@ -87,7 +87,7 @@ public class ElectricityNoWires : IModApi
         }
     }
 
-
+/*
     [HarmonyPatch(typeof(PowerManager))]
     [HarmonyPatch("Update")]
     public class PowerManager_Update
@@ -116,6 +116,7 @@ public class ElectricityNoWires : IModApi
             return false;
         }
     }
+*/
 
     // Resets duration when triggered again
     // Copied from ElectricityWorkarounds

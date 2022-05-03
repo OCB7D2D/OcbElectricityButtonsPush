@@ -1,4 +1,6 @@
+#define UPDATE_IMMEDIATE
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TileEntityButtonPush : TileEntityPoweredTrigger
@@ -7,7 +9,6 @@ public class TileEntityButtonPush : TileEntityPoweredTrigger
     // Really just an arbitrary number (I tend to use number above 241)
     // ToDo: make this overwriteable via e.g. a file!?
     public static TileEntityType Type => (TileEntityType)243;
-
 
     // Store state client side
     // Only used if not a server
@@ -88,7 +89,9 @@ public class TileEntityButtonPush : TileEntityPoweredTrigger
             };
         }
         return item;
-    } 
+    }
+
+    static Queue<PowerPushButton> queue = new Queue<PowerPushButton>();
 
     public void Toggle()
     {
@@ -103,19 +106,26 @@ public class TileEntityButtonPush : TileEntityPoweredTrigger
         // Check if mode is timed (meaning we will just reset the timer if already on)
         if (root.TriggerPowerDuration == PowerTrigger.TriggerPowerDurationTypes.Always)
         {
+#if UPDATE_IMMEDIATE
+            Log.Out("Root Set Active {0}", !root.IsActive);
+            // Immediately setup the state
             root.SetIsActive(!root.IsActive);
+#else
+            // Let PowerManager figure it out
+            if (root.IsActive) root.ResetTrigger();
+            else root.IsTriggered = true;
+#endif
         }
-        // Otherwise we just toggle the thing
         else
         {
-            root.IsTriggered = !root.IsTriggered;
+            // Otherwise we just toggle the thing
+            root.IsTriggered = true; // !root.IsTriggered;
         }
     }
 
     protected override void setModified()
     {
         base.setModified();
-        // Handles disconnects
         UpdateEmissionColor();
     }
 

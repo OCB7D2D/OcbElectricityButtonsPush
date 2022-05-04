@@ -81,7 +81,7 @@ public class PowerPushButton : PowerTrigger
         // Process whole tree
         queue.Enqueue(this);
         // Also inform root about changes
-        // SendHasLocalChangesToRoot();
+        SendHasLocalChangesToRoot();
         // Start to process children
         while (queue.Count > 0)
         {

@@ -52,10 +52,8 @@ public class PowerPushButton : PowerTrigger
     {
         if (delayStartTime >= 0.0)
         {
-            Log.Out("CachedUpdateCall {0} {1}", Time.time - lastPowerTime, delayStartTime);
             if (Time.time - lastPowerTime >= delayStartTime)
             {
-                Log.Out("Starting now");
                 delayStartTime = -1f;
                 SetupDurationTime();
                 SetIsActive(true);
@@ -63,7 +61,6 @@ public class PowerPushButton : PowerTrigger
         }
         else if (powerTime > 0.0 && !parentTriggered && Time.time - lastPowerTime >= powerTime)
         {
-            Log.Out("Time is up");
             powerTime = -1f;
             SetIsActive(false);
             HandleSoundDisable();
@@ -96,7 +93,6 @@ public class PowerPushButton : PowerTrigger
             // Non-recursive part of `HandlePowerUpdate`
             if (btn.TileEntity is TileEntityButtonPush te)
             {
-                Log.Out("Activate {0} {1}", IsPowered, active);
                 // Apply changes also to tile entity
                 te.Activate(IsPowered, active);
                 // Inform all clients

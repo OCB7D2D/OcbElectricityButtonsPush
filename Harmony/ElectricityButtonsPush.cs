@@ -87,37 +87,6 @@ public class ElectricityNoWires : IModApi
         }
     }
 
-/*
-    [HarmonyPatch(typeof(PowerManager))]
-    [HarmonyPatch("Update")]
-    public class PowerManager_Update
-    {
-        public static bool Prefix(
-            PowerManager __instance,
-            ref float ___updateTime,
-            ref List<PowerSource> ___PowerSources,
-            ref List<PowerTrigger> ___PowerTriggers
-            )
-        {
-            if (SingletonMonoBehaviour<ConnectionManager>.Instance.IsServer && GameManager.Instance.gameStateManager.IsGameStarted())
-            {
-                ___updateTime -= Time.deltaTime;
-                if ((double)___updateTime <= 0.0)
-                {
-                    for (int index = 0; index < ___PowerSources.Count; ++index)
-                        ___PowerSources[index].Update();
-                    for (int index = 0; index < ___PowerTriggers.Count; ++index)
-                        ___PowerTriggers[index].CachedUpdateCall();
-                    ___updateTime = 4.16f;
-                }
-            }
-            for (int index = 0; index < __instance.ClientUpdateList.Count; ++index)
-                __instance.ClientUpdateList[index].ClientUpdate();
-            return false;
-        }
-    }
-*/
-
     // Resets duration when triggered again
     // Copied from ElectricityWorkarounds
     [HarmonyPatch(typeof(PowerTrigger))]

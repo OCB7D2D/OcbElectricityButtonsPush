@@ -111,28 +111,6 @@ public class BlockButtonPush : BlockPowered
         base.OnBlockValueChanged(_world, _chunk, _clrIdx, _blockPos, _oldBlockValue, _newBlockValue);
         if (_world.GetTileEntity(_clrIdx, _blockPos) is TileEntityButtonPush tileEntity)
             tileEntity.UpdateEmissionColor(null);
-        Log.Out("Block Value changed");
-    }
-
-    public override string GetActivationText(
-        WorldBase _world,
-        BlockValue _blockValue,
-        int _clrIdx,
-        Vector3i _blockPos,
-        EntityAlive _entityFocusing)
-    {
-        if (!(_world.GetTileEntity(_clrIdx, _blockPos) is TileEntityButtonPush te)) return "{No tile entity}";
-        string str = Localization.Get("ocbBlockPushPowerButton");
-        if (te.GetPowerItem() is PowerPushButton pw)
-        {
-            str += string.Format("\nPW Active {0}, Triggered {1} vs {2}, Powered: {3}", pw.IsActive, pw.IsTriggered, pw.LastTriggered, pw.IsPowered);
-            str += string.Format("\nPW Start Power Time {0}, Last Time: {1}", pw.StartTime, Time.time - pw.LastPowerTime);
-            str += string.Format("\nPW End Power Time {0}, Last Time: {1}", pw.PowerTime, Time.time - pw.LastPowerTime);
-            str += string.Format("\nParent Triggered {0}, Changes {1}", pw.IsTriggeredByParent, pw.HasLocalChanges);
-        }
-        if (te != null && te.GetPowerItem() != null)
-            str += string.Format("\nTE Active {0}, Triggered {1}, Powered {2}", te.IsActive(_world as World), te.IsTriggered, te.IsPowered);
-        return str;
     }
 
     public override bool OnBlockActivated(

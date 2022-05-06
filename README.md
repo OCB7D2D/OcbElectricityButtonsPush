@@ -47,6 +47,8 @@ often a `ClientData` field to hold this information on pure clients.
 
 - Refactored code for cleaner multiplayer support
 - Fixes multiplayer hosted from single player game
+- Pushing buttons is now always handled by the server
+- Only compatible with Electricity Overhaul >= 0.9.6
 
 ### Version 0.5.1
 

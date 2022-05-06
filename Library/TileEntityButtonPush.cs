@@ -1,7 +1,5 @@
 #define UPDATE_IMMEDIATE
-using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class TileEntityButtonPush : TileEntityPoweredTrigger
 {
@@ -107,7 +105,6 @@ public class TileEntityButtonPush : TileEntityPoweredTrigger
         if (root.TriggerPowerDuration == PowerTrigger.TriggerPowerDurationTypes.Always)
         {
 #if UPDATE_IMMEDIATE
-            Log.Out("Root Set Active {0}", !root.IsActive);
             // Immediately setup the state
             root.SetIsActive(!root.IsActive);
 #else

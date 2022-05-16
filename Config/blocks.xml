@@ -1,4 +1,4 @@
-<configs>
+<configs patcher-version="1">
 
 	<append xpath="/blocks">
 
@@ -12,12 +12,10 @@
 			<property name="DescriptionKey" value="ocbPushButtonDesc"/>
 			<property name="Mesh" value="models"/>
 
-			<property name="Material" value="Mmetal_weak"/>
 			<property name="StabilitySupport" value="false"/>
 			<property name="IsTerrainDecoration" value="false"/>
 			<property name="ImposterDontBlock" value="true"/>
 			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
-			<property name="UnlockedBy" value="perkAdvancedEngineering"/>
 
 			<property name="Group" value="Science"/>
 			<property name="SortOrder1" value="70a0"/>
@@ -31,17 +29,22 @@
 			<property name="HandleFace" value="South"/>
 			<property name="WireOffset" value="0,0,-.5"/>
 
-			<property class="RepairItems">
-				<property name="resourceScrapPolymers" value="2"/>
-			</property>
+			<property name="SellableToTrader" value="true"/>
+			<property name="EconomicValue" value="60"/>
+			<property name="EconomicBundleSize" value="5"/>
 
-			<drop event="Harvest" name="resourceElectricParts" count="1" prob="0.2" tag="salvageHarvest"/>
-			<drop event="Destroy" name="resourceScrapPolymers" count="1,2"/>
-
+			<property name="Stacknumber" value="10"/>
 			<property name="TakeDelay" value="5"/>
 
 		</block>
 
 	</append>
+
+	<modif condition="UndeadLegacy_CoreModule">
+		<include path="blocks.ulm.xml"/>
+	</modif>
+	<modelse>
+		<include path="blocks.a20.xml"/>
+	</modelse>
 
 </configs>

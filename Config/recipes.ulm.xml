@@ -1,0 +1,30 @@
+<configs>
+
+	<append xpath="/recipes">
+
+		<recipe name="ocbPushButtonBlueprint" time="60" area="ulmStationResearch_1">
+			<ingredient name="ocbPushButton01" count="1"/>
+			<ingredient name="resourceMechanicalParts" count="2"/>
+			<ingredient name="resourceElectricParts" count="2"/>
+			<ingredient name="resourceScrapPolymers" count="4"/>
+			<ingredient name="ulmResourceElectronicCircuitboard"/>
+			<ingredient name="ulmResourceElectronicSwitch"/>
+			<ingredient name="ulmResourceResearch" count="100"/>
+			<ingredient name="resourcePaper" count="10"/>
+		</recipe>
+
+		<recipe name="ocbPushButton01" time="5"
+				tags="learnable" area="ulmStationWorkbench_2">
+			<ingredient name="resourceMechanicalParts" count="2"/>
+			<ingredient name="resourceElectricParts" count="2"/>
+			<ingredient name="ulmResourceScrapWires" count="2"/>
+			<ingredient name="resourceScrapPolymers" count="4"/>
+			<ingredient name="ulmResourceElectronicInsulator"/>
+			<ingredient name="ulmResourceElectronicCircuitboard"/>
+			<ingredient name="ulmResourceElectronicDiode"/>
+			<ingredient name="ulmResourceElectronicSwitch"/>
+		</recipe>
+
+	</append>
+
+</configs>

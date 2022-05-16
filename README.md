@@ -30,15 +30,22 @@ Simply [download here from GitHub][1] and put into your A20 Mods folder:
 
 ## Changelog
 
+### Version 0.6.0
+
+- Add compatibility patches for Undead Legacy
+- Adds (lootable) Push Button Blueprint item
+- Push Button is craftable at workstation T2
+- ULM Recipes are not set in stone yet ;-)
+
 ### Version 0.5.1
 
-- Fixed description in localization
-- Automated deployment and release packaging
-
+- Added localization fix
+- Completed German translation
 
 ### Version 0.5.0
 
-- Some clean-ups and copied bugfix from ElectricityWorkarounds
+- A few minor code refactorings and cleanups
+- Copied bugfix from ElectricityWorkarounds
 
 ### Version 0.4.0
 

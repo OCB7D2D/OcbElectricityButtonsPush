@@ -1,0 +1,17 @@
+<configs>
+
+	<append xpath="/blocks/block[@name='ocbPushButton01']">
+
+		<property name="Material" value="Mmetal_weak"/>
+		<property name="UnlockedBy" value="perkAdvancedEngineering"/>
+
+		<property class="RepairItems">
+			<property name="resourceScrapPolymers" value="2"/>
+		</property>
+
+		<drop event="Harvest" name="resourceElectricParts" count="1" prob="0.2" tag="salvageHarvest"/>
+		<drop event="Destroy" name="resourceScrapPolymers" count="1,2"/>
+	
+	</append>
+
+</configs>

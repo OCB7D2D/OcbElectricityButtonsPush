@@ -32,7 +32,8 @@ Simply [download here from GitHub][1] and put into your A20 Mods folder:
 
 ### Version 0.6.0
 
-- Add compatibility patches for Undead Legacy
+- Introducing compatibility for Undead Legacy (experimental)  
+  Rename this mod to e.g `ZElectricityPushButton` to load after UL
 - Adds (lootable) Push Button Blueprint item
 - Push Button is craftable at workstation T2
 - ULM Recipes are not set in stone yet ;-)

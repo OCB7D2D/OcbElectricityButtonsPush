@@ -30,6 +30,10 @@ Simply [download here from GitHub][1] and put into your A20 Mods folder:
 
 ## Changelog
 
+### Version 0.6.1
+
+- Add automated translations for 27 languages via DeepL
+
 ### Version 0.6.0
 
 - Introducing compatibility for Undead Legacy (experimental)  

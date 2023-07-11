@@ -1,4 +1,4 @@
-<configs patcher-version="1">
+<configs patcher-version="4">
 
 	<append xpath="/blocks">
 
@@ -8,18 +8,15 @@
 			<property name="Class" value="ButtonPush, ElectricityButtonsPush"/>
 			<property name="CustomIcon" value="PushButton01"/>
 			<property name="Shape" value="ModelEntity" />
-			<property name="Model" value="#@modfolder:Resources/ButtonsPush.unity3d?PushButton1" />
+			<property name="Model" value="#@modfolder:Resources/ButtonsPush.unity3d?PushButton2" />
 			<property name="DescriptionKey" value="ocbPushButtonDesc"/>
-			<property name="Mesh" value="models"/>
+
+			<property name="TintColor" value="186,192,198"/>
 
 			<property name="StabilitySupport" value="false"/>
 			<property name="IsTerrainDecoration" value="false"/>
 			<property name="ImposterDontBlock" value="true"/>
-			<property name="Collide" value="movement,melee,bullet,arrow,rocket"/>
-
-			<property name="Group" value="Science"/>
-			<property name="SortOrder1" value="70a0"/>
-			<property name="FilterTags" value="fdecor,felectrical"/>
+			<property name="Collide" value="melee,bullet,arrow,rocket"/>
 
 			<property name="RequiredPower" value="1"/>
 			<property name="EconomicValue" value="10"/>
@@ -36,6 +33,12 @@
 			<property name="Stacknumber" value="10"/>
 			<property name="TakeDelay" value="5"/>
 
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="electricianSkill"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0007a"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_electrical"/>
+
 		</block>
 
 	</append>
@@ -44,7 +47,7 @@
 		<include path="blocks.ulm.xml"/>
 	</modif>
 	<modelse>
-		<include path="blocks.a20.xml"/>
+		<include path="blocks.a21.xml"/>
 	</modelse>
 
 </configs>

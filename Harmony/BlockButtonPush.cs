@@ -89,7 +89,7 @@ public class BlockButtonPush : BlockPowered
     }
 
     public override bool OnBlockActivated(
-        int cmd,
+        string cmd,
         WorldBase _world,
         int _cIdx,
         Vector3i _blockPos,
@@ -105,7 +105,7 @@ public class BlockButtonPush : BlockPowered
         if (!(_world.GetTileEntity(_cIdx, _blockPos) is TileEntityButtonPush tileEntity)) return false;
         // Will only work on server (includes SinglePlayer)
         tileEntity = tileEntity.GetPushButtonCircuitRoot();
-        if (cmd == 0)
+        if (cmd == "light")
         {
             if (tileEntity.GetPowerItem() is PowerTrigger item)
             {
@@ -137,14 +137,14 @@ public class BlockButtonPush : BlockPowered
             }
             UpdateStates(_world, _cIdx, tileEntity);
         }
-        else if (cmd == 1)
+        else if (cmd == "options")
         {
             _player.AimingGun = false;
             _world.GetGameManager().TELockServer(_cIdx,
                 tileEntity.ToWorldPos(), tileEntity.entityId,
                 _player.entityId);
         }
-        else if (cmd == 2)
+        else if (cmd == "take")
         {
             TakeItemWithTimer(_cIdx, _blockPos, _blockValue, _player);
         }

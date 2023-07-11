@@ -1,4 +1,4 @@
-﻿<configs patcher-version="1">
+﻿<configs patcher-version="4">
 
 	<modif condition="UndeadLegacy_CoreModule">
 		<append xpath="/lootcontainers/lootgroup[@name='groupJunkElectrical']">
@@ -6,9 +6,6 @@
 		</append>
 		<append xpath="/lootcontainers/lootgroup[@name='groupElectricalDevices']">
 			<item name="ocbPushButton01" count="1" loot_prob_template="medHigh" />
-		</append>
-		<append xpath="/lootcontainers/lootgroup[@name='booksElectrical']">
-			<item name="ocbPushButtonBlueprint" />
 		</append>
 	</modif>
 	<modelse>

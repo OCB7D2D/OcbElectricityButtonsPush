@@ -2,6 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <PATH_7D2D_MANAGED Condition=" '$(PATH_7D2D_MANAGED)' == '' ">..\..\7DaysToDie_Data\Managed</PATH_7D2D_MANAGED>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <BaseIntermediateOutputPath>build\obj\$(AssemblyName)</BaseIntermediateOutputPath>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ElectricityButtonsPush</RootNamespace>
     <AssemblyName>ElectricityButtonsPush</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -22,6 +23,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PostBuildEvent>
+      copy /Y /B "$(AssemblyName).dll" "..\..\..\$(AssemblyName).dll"
+    </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +34,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PostBuildEvent>
+      copy /Y /B "$(AssemblyName).dll" "..\..\..\$(AssemblyName).dll"
+    </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -74,17 +81,21 @@
     <Compile Include="Harmony\ElectricityButtonsPush.cs" />
     <Compile Include="Harmony\TileEntityButtonPush.cs" />
     <Compile Include="Harmony\AssemblyInfo.cs" />
+    <Compile Include="Library\ModXmlPatcher.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\blocks.a21.xml" />
     <Content Include="Config\blocks.a20.xml" />
     <Content Include="Config\blocks.ulm.xml" />
     <Content Include="Config\blocks.xml" />
-    <Content Include="Config\items.a20.xml" />
     <Content Include="Config\items.ulm.xml" />
     <Content Include="Config\items.xml" />
     <Content Include="Config\Localization.txt" />
     <Content Include="Config\loot.xml" />
+    <Content Include="Config\progression.a21.xml" />
+    <Content Include="Config\progression.a20.xml" />
     <Content Include="Config\progression.xml" />
+    <Content Include="Config\recipes.a21.xml" />
     <Content Include="Config\recipes.a20.xml" />
     <Content Include="Config\recipes.ulm.xml" />
     <Content Include="Config\recipes.xml" />

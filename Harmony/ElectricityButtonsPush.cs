@@ -1,13 +1,13 @@
-using System.Reflection;
 using HarmonyLib;
+using System.Reflection;
 using UnityEngine;
 
 public class ElectricityNoWires : IModApi
 {
     public void InitMod(Mod mod)
     {
-        Debug.Log("Loading OCB Push Circuit Patch: " + GetType().ToString());
-        var harmony = new Harmony(GetType().ToString());
+        Log.Out("OCB Harmony Patch: " + GetType().ToString());
+        Harmony harmony = new Harmony(GetType().ToString());
         harmony.PatchAll(Assembly.GetExecutingAssembly());
     }
 

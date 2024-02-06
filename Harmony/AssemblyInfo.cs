@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("OCBNET")]
 [assembly: AssemblyProduct("ElectricityButtonsPush")]
-[assembly: AssemblyCopyright("Copyright © Marcel Greter 2021")]
+[assembly: AssemblyCopyright("Copyright © Marcel Greter 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,0 +1,120 @@
+<configs>
+	<append xpath="/blocks">
+		<block name="ocbPushButton01">
+			<property name="CreativeMode" value="None"/>
+			<property name="Class" value="ButtonPush, ElectricityButtonsPush"/>
+			<property name="CustomIcon" value="PushButton01"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/ButtonsPush.unity3d?PushButton2"/>
+			<property name="DescriptionKey" value="ocbPushButtonDesc"/>
+
+			<property name="StabilitySupport" value="false"/>
+			<property name="IsTerrainDecoration" value="false"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Collide" value="melee,bullet,arrow,rocket"/>
+
+			<property name="RequiredPower" value="1"/>
+			<property name="EconomicValue" value="10"/>
+			<property name="EconomicBundleSize" value="10"/>
+
+			<property name="TriggerType" value="Switch"/>
+			<property name="HandleFace" value="South"/>
+			<property name="WireOffset" value="0,0,-.5"/>
+
+			<property name="SellableToTrader" value="true"/>
+			<property name="EconomicValue" value="60"/>
+			<property name="EconomicBundleSize" value="5"/>
+
+			<property name="Stacknumber" value="10"/>
+			<property name="TakeDelay" value="5"/>
+
+			<property name="Group" value="Science,TCScience"/>
+			<property name="Tags" value="electricianSkill"/>
+			<property name="SortOrder1" value="B155"/>
+			<property name="SortOrder2" value="0007a"/>
+			<property name="FilterTags" value="MC_playerBlocks,SC_electrical"/>
+
+			<property name="ReturnVariantHelper" value="ocbPushButtonVariantHelper"/>
+		</block>
+
+		<block name="ocbPushButton01White">
+			<property name="Extends" value="ocbPushButton01"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="TintColor" value="186,192,198"/>
+		</block>
+
+		<block name="ocbPushButton01Brown">
+			<property name="Extends" value="ocbPushButton01"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIconTint" value="726858"/>
+			<property name="TintColor" value="726858"/>
+		</block>
+
+		<block name="ocbPushButton01Red">
+			<property name="Extends" value="ocbPushButton01"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIconTint" value="8C6B71"/>
+			<property name="TintColor" value="8C6B71"/>
+		</block>
+
+		<block name="ocbPushButton01Yellow">
+			<property name="Extends" value="ocbPushButton01"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIconTint" value="8C8864"/>
+			<property name="TintColor" value="8C8864"/>
+		</block>
+
+		<block name="ocbPushButton01Green">
+			<property name="Extends" value="ocbPushButton01"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIconTint" value="68796A"/>
+			<property name="TintColor" value="68796A"/>
+		</block>
+
+		<block name="ocbPushButton01Blue">
+			<property name="Extends" value="ocbPushButton01"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIconTint" value="707C81"/>
+			<property name="TintColor" value="707C81"/>
+		</block>
+
+		<block name="ocbPushButton01Purple">
+			<property name="Extends" value="ocbPushButton01"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIconTint" value="6A6572"/>
+			<property name="TintColor" value="6A6572"/>
+		</block>
+
+		<block name="ocbPushButton01Grey">
+			<property name="Extends" value="ocbPushButton01"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIconTint" value="808080"/>
+			<property name="TintColor" value="808080"/>
+		</block>
+
+		<block name="ocbPushButton01ArmyGreen">
+			<property name="Extends" value="ocbPushButton01"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIconTint" value="465448"/>
+			<property name="TintColor" value="465448"/>
+		</block>
+
+		<block name="ocbPushButtonVariantHelper">
+			<block name="ocbPushButton01Blue">
+				<property name="Extends" value="ocbPushButton01"/>
+				<property name="CreativeMode" value="None"/>
+				<property name="TintColor" value="26,26,198"/>
+				<property name="CustomIconTint" value="26,26,198"/>
+			</block>
+
+			<property name="Extends" value="ocbPushButton01"/>
+			<property name="CreativeMode" value="Player"/>
+			<property name="SelectAlternates" value="true"/>
+			<property name="ItemTypeIcon" value="all_blocks"/>
+			<property
+				name="PlaceAltBlockValue"
+				value="ocbPushButton01White,ocbPushButton01Brown,ocbPushButton01Red,ocbPushButton01Yellow,ocbPushButton01Green,ocbPushButton01Blue,ocbPushButton01Purple,ocbPushButton01Grey,ocbPushButton01ArmyGreen"
+			/>
+		</block>
+	</append>
+</configs>

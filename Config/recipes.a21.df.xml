@@ -1,6 +1,6 @@
 <configs>
 	<append xpath="/recipes">
-		<recipe name="ocbPushButtonVariantHelper" count="1" tags="perkAdvancedEngineering,learnable" craft_area="workbench" material_based="false" craft_time="25">
+		<recipe name="ocbPushButtonVariantHelper" count="1" tags="perkElectricBasics,perkAdvancedEngineering,learnable" craft_area="workbench" material_based="false" craft_time="25">
 			<ingredient name="resourceScrapPolymers" count="4"/>
 			<ingredient name="resourceElectricParts" count="2"/>
 			<ingredient name="resourceMechanicalParts" count="2"/>

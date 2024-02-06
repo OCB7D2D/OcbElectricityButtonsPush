@@ -45,6 +45,9 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>$(PATH_7D2D_MANAGED)\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>$(PATH_7D2D_MANAGED)\mscorlib.dll</HintPath>
+    </Reference>
     <Reference Include="LogLibrary">
       <HintPath>$(PATH_7D2D_MANAGED)\LogLibrary.dll</HintPath>
     </Reference>
@@ -79,25 +82,31 @@
   <ItemGroup>
     <Compile Include="Harmony\BlockButtonPush.cs" />
     <Compile Include="Harmony\ElectricityButtonsPush.cs" />
+    <Compile Include="Harmony\PowerPushButton.cs" />
+    <Compile Include="Harmony\ReturnVariantHelper.cs" />
     <Compile Include="Harmony\TileEntityButtonPush.cs" />
     <Compile Include="Harmony\AssemblyInfo.cs" />
     <Compile Include="Library\ModXmlPatcher.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\blocks.a21.base.xml" />
+    <Content Include="Config\blocks.a21.df.xml" />
     <Content Include="Config\blocks.a21.xml" />
     <Content Include="Config\blocks.a20.xml" />
     <Content Include="Config\blocks.ulm.xml" />
     <Content Include="Config\blocks.xml" />
-    <Content Include="Config\items.ulm.xml" />
+    <Content Include="Config\items.a20.ulm.xml" />
     <Content Include="Config\items.xml" />
     <Content Include="Config\Localization.txt" />
     <Content Include="Config\loot.xml" />
+    <Content Include="Config\progression.a21.df.xml" />
     <Content Include="Config\progression.a21.xml" />
     <Content Include="Config\progression.a20.xml" />
     <Content Include="Config\progression.xml" />
+    <Content Include="Config\recipes.a21.df.xml" />
     <Content Include="Config\recipes.a21.xml" />
     <Content Include="Config\recipes.a20.xml" />
-    <Content Include="Config\recipes.ulm.xml" />
+    <Content Include="Config\recipes.a20.ulm.xml" />
     <Content Include="Config\recipes.xml" />
     <Content Include="ModInfo.xml" />
   </ItemGroup>

@@ -19,6 +19,33 @@ MonoBehaviour:
   AppendHashToAssetBundleName: 1
   Compression: 1
   VerboseLogging: 0
+  ShowPlatformTargets: 1
+  StandaloneWindows: 1
+  StandaloneMacOSX: 0
+  StandaloneLinux: 0
+  StripRedundantAPIs: 1
+  WantD3D11: 1
+  WantOpenGL: 1
+  WantVulkan: 1
+  WantMetal: 1
+  SeparateShaders: 0
+  ShowShaderStripping: 0
+  StripMetaPass: 0
+  StripForwardBasePass: 0
+  StripForwardAddPass: 0
+  StripDeferredPass: 0
+  StripShadowCasterPass: 0
+  StripFogNone: 0
+  StripFogLinear: 1
+  StripFogExp: 0
+  StripFogExp2: 1
+  StripInstancing: 0
+  StripLightmapPlain: 1
+  StripLightmapDirCombined: 1
+  StripLightmapDynamicPlain: 1
+  StripLightmapDynamicDirCombined: 1
+  StripLightmapShadowMask: 1
+  StripLightmapSubtractive: 1
   Objects:
   - {fileID: 3052286304613674323, guid: b3a24317cbf3fd944997bcdd0e54e9c6, type: 3}
   - {fileID: 3484046797594933645, guid: e1f8a7b752657754091b83db518d0261, type: 3}

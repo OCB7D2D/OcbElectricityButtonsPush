@@ -1,5 +1,5 @@
 ﻿<configs patcher-version="4">
 	<modif condition="UndeadLegacy_CoreModule">
-		<include path="items.ulm.xml"/>
+		<include path="items.a20.ulm.xml"/>
 	</modif>
 </configs>

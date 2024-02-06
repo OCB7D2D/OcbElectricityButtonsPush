@@ -1,6 +1,5 @@
 ﻿<configs>
 	<append xpath="/items">
-
 		<item name="ocbPushButtonBlueprint">
 			<property name="Extends" value="schematicNoQualityMaster"/>
 			<property name="CustomIcon" value="PushButton01"/>
@@ -11,6 +10,5 @@
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="50"/>
 			</effect_group>
 		</item>
-
 	</append>
 </configs>

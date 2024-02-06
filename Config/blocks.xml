@@ -1,14 +1,11 @@
 <configs patcher-version="4">
-
 	<append xpath="/blocks">
-
 		<block name="ocbPushButton01">
-
 			<property name="CreativeMode" value="Player"/>
 			<property name="Class" value="ButtonPush, ElectricityButtonsPush"/>
 			<property name="CustomIcon" value="PushButton01"/>
-			<property name="Shape" value="ModelEntity" />
-			<property name="Model" value="#@modfolder:Resources/ButtonsPush.unity3d?PushButton2" />
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Model" value="#@modfolder:Resources/ButtonsPush.unity3d?PushButton2"/>
 			<property name="DescriptionKey" value="ocbPushButtonDesc"/>
 
 			<property name="TintColor" value="186,192,198"/>
@@ -38,9 +35,7 @@
 			<property name="SortOrder1" value="B155"/>
 			<property name="SortOrder2" value="0007a"/>
 			<property name="FilterTags" value="MC_playerBlocks,SC_electrical"/>
-
 		</block>
-
 	</append>
 
 	<modif condition="UndeadLegacy_CoreModule">
@@ -49,5 +44,4 @@
 	<modelse>
 		<include path="blocks.a21.xml"/>
 	</modelse>
-
 </configs>

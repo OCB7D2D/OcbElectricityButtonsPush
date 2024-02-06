@@ -1,7 +1,5 @@
 <configs>
-
 	<append xpath="/blocks/block[@name='ocbPushButton01']">
-
 		<property name="Material" value="matPlasticItem"/>
 		<property name="UnlockedBy" value="ocbPushButtonBlueprint"/>
 
@@ -17,11 +15,9 @@
 		<drop event="Harvest" name="ulmResourceElectronicSwitch" count="0,1" prob="0.4" tag="salvageHarvest"/>
 		<drop event="Harvest" name="ulmResourceScrapWires" count="0,1" prob="0.8" tag="salvageHarvest"/>
 		<drop event="Harvest" name="resourceElectricParts" count="0,1" prob="0.2" tag="salvageHarvest"/>
-		<drop event="Destroy" name="resourceScrapPolymers" count="1,2" prob="0.8" />
+		<drop event="Destroy" name="resourceScrapPolymers" count="1,2" prob="0.8"/>
 		<drop event="Fall" count="0" prob="0"/>
 
 		<property name="CarryWeight" value="0.1"/>
-
 	</append>
-
 </configs>

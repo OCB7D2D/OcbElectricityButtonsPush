@@ -2,4 +2,12 @@
 	<modif condition="UndeadLegacy_CoreModule">
 		<include path="items.a20.ulm.xml"/>
 	</modif>
+	<modelsif condition="DarknessFallsCore">
+		<csv xpath="/items/item/property[@class]/property[@name='Create_item' and contains(@value, 'electricianSkillMagazine')]/@value" op="add">ocbPushButtonVariantHelper</csv>
+		<csv xpath="/items/item/property[@class]/property[@name='Create_item' and contains(@value, 'electricianSkillMagazine')]/@value" op="remove">electricianSkillMagazine</csv>
+	</modelsif>
+	<modelse>
+		<csv xpath="/items/item[@name='questRewardBatteryBankBundle']/property[@class]/property[@name='Create_item']/@value" op="add">ocbPushButtonVariantHelper</csv>
+		<csv xpath="/items/item[@name='questRewardBatteryBankBundle']/property[@class]/property[@name='Create_item_count']/@value" op="add">3</csv>
+	</modelse>
 </configs>

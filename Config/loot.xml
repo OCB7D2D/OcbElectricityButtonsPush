@@ -1,21 +1,20 @@
 ﻿<configs patcher-version="4">
 	<modif condition="UndeadLegacy_CoreModule">
 		<append xpath="/lootcontainers/lootgroup[@name='groupJunkElectrical']">
-			<item name="ocbPushButton01" count="1" loot_prob_template="medLow"/>
+			<item name="ocbPushButtonVariantHelper" count="1" loot_prob_template="medLow"/>
 		</append>
 		<append xpath="/lootcontainers/lootgroup[@name='groupElectricalDevices']">
-			<item name="ocbPushButton01" count="1" loot_prob_template="medHigh"/>
+			<item name="ocbPushButtonVariantHelper" count="1" loot_prob_template="medHigh"/>
 		</append>
 	</modif>
 	<modelsif condition="DarknessFallsCore">
-		<include path="blocks.a21.xml"/>
-		<!--
-		<include path="blocks.a21.df.xml"/>
-    -->
+		<append xpath="/lootcontainers/lootgroup[@name='groupScrapRare']">
+			<item name="ocbPushButtonVariantHelper" count="1" loot_prob_template="med"/>
+		</append>
 	</modelsif>
 	<modelse>
 		<append xpath="/lootcontainers/lootgroup[@name='groupScrapRare']">
-			<item name="ocbPushButton01" count="1" loot_prob_template="med"/>
+			<item name="ocbPushButtonVariantHelper" count="1" loot_prob_template="med"/>
 		</append>
 	</modelse>
 </configs>

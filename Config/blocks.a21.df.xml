@@ -1,5 +1,5 @@
 <configs>
-	<append xpath="/blocks/block[@name='ocbPushButton01']">
+	<append xpath="/blocks/block[@name='ocbPushButton01Base']">
 		<property name="Material" value="Mmetal_weak"/>
 		<property name="UnlockedBy" value="perkElectricBasics,perkAdvancedEngineering"/>
 

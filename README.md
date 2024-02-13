@@ -32,7 +32,7 @@ Simply [download here from GitHub][1] and put into your A20 Mods folder:
 
 ### Version 0.8.1
 
-- Refactor code for better Mulit-Player compatibility
+- Refactor code for better Multi-Player compatibility
 - Added first Darkness Falls A21 compatibility
 
 ### Version 0.8.0

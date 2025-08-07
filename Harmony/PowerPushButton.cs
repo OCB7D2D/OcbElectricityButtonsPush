@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using UnityEngine;
 
 public class PowerPushButton : PowerTrigger
 {
@@ -21,7 +22,7 @@ public class PowerPushButton : PowerTrigger
 
     private bool IsInstantToggle()
     {
-        var root = this; // GetCurcuitRoot();
+        var root = GetCurcuitRoot();
         return root.triggerPowerDelay == TriggerPowerDelayTypes.Instant &&
             (root.triggerPowerDuration == TriggerPowerDurationTypes.Always ||
             root.triggerPowerDuration == TriggerPowerDurationTypes.Triggered);
@@ -46,8 +47,12 @@ public class PowerPushButton : PowerTrigger
     // ####################################################################
     // ####################################################################
 
+    /*
     public override void HandlePowerUpdate(bool parentIsOn)
     {
+        Log.Out("============= Handle Power Update");
+        Log.Out("============= Handle Power Update");
+        Log.Out("============= Handle Power Update");
         if (TileEntity != null)
         {
             // Only difference to vanilla is that we pass `IsActive` instead of `isTriggered`
@@ -59,7 +64,8 @@ public class PowerPushButton : PowerTrigger
         {
             if (Children[index] is PowerTrigger)
             {
-                HandleParentTriggering(Children[index] as PowerTrigger);
+                if (Children[index] is PowerTrigger trigger)
+                    HandleParentTriggering(trigger);
                 Children[index].HandlePowerUpdate(isPowered & parentIsOn);
             }
             else if (IsActive) Children[index].HandlePowerUpdate(isPowered & parentIsOn);
@@ -68,6 +74,39 @@ public class PowerPushButton : PowerTrigger
         HandleSingleUseDisable();
     }
     // EO HandlePowerUpdate
+    */
+
+    // ####################################################################
+    // ####################################################################
+
+    public void EnableVisualState() => GetCurcuitRoot().UpdateVisualState(true);
+    public void DisableVisualState() => GetCurcuitRoot().UpdateVisualState(false);
+
+    public void UpdateVisualState(bool enable)
+    {
+        var world = GameManager.Instance.World;
+        BlockValue bv = world.GetBlock(Position);
+        if (enable)
+        {
+            if ((bv.meta & 0b10) != 0b10)
+            {
+                bv.meta |= 0b10;
+                world.SetBlockRPC(Position, bv);
+            }
+        }
+        else
+        {
+            if ((bv.meta & 0b10) == 0b10)
+            {
+                bv.meta &= (byte)(bv.meta & ~(0b10));
+                world.SetBlockRPC(Position, bv);
+            }
+        }
+        if (bv.Block is BlockButtonPush block)
+            foreach (var child in this.Children)
+                if (child is PowerPushButton trigger)
+                    trigger.UpdateVisualState(enable);
+    }
 
     // ####################################################################
     // ####################################################################
@@ -81,16 +120,24 @@ public class PowerPushButton : PowerTrigger
                 lastTriggered = isTriggered;
                 isTriggered = value;
                 if (isTriggered && !lastTriggered)
+                {
+                    EnableVisualState();
                     isActive = true;
+                }
                 SendHasLocalChangesToRoot();
                 if (!isTriggered && lastTriggered)
                 {
+                    DisableVisualState();
                     HandleDisconnectChildren();
                     isActive = false;
                 }
             }
             else
             {
+                if (isTriggered != value)
+                {
+                    Log.Out("Changed trigger to {0}", value);
+                }
                 base.IsTriggered = value;
             }
         }
@@ -120,7 +167,7 @@ public class PowerPushButton : PowerTrigger
     // ####################################################################
     // ####################################################################
 
-    protected override void HandleSingleUseDisable()
+    public override void HandleSingleUseDisable()
     {
         if (IsInstantToggle()) return;
         base.HandleSingleUseDisable();
@@ -130,9 +177,45 @@ public class PowerPushButton : PowerTrigger
     public override void CachedUpdateCall()
     {
         if (IsInstantToggle()) return;
+        // Some code copied (do the compare twice)
+        // This way we still call the original method
+        // Might be useful if some one else patched it
+        if (delayStartTime >= 0.0)
+        {
+            if (Time.time - lastPowerTime >= delayStartTime)
+            {
+                EnableVisualState();
+            }
+        }
+        else if (powerTime > 0.0)
+        {
+            if (!parentTriggered && Time.time - lastPowerTime >= powerTime)
+        {
+                DisableVisualState();
+            }
+        } 
         base.CachedUpdateCall();
     }
     // EO CachedUpdateCall
+
+    // ####################################################################
+    // ####################################################################
+
+    public override void CheckForActiveChange()
+    {
+        // This would allow to also trigger "always" mode
+        // Doesn't make much sense, always means always!?
+        // if (powerTime == -1.0) return;
+        if (powerTime > 0.0) return;
+        if (!lastTriggered) return;
+        if (isTriggered) return;
+        DisableVisualState();
+        isActive = false;
+        HandleDisconnectChildren();
+        SendHasLocalChangesToRoot();
+        powerTime = -1f;
+    }
+    // EO CheckForActiveChange
 
     // ####################################################################
     // ####################################################################

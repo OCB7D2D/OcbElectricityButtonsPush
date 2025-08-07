@@ -20,7 +20,8 @@ public class TileEntityButtonPush : TileEntityPoweredTrigger
     // ####################################################################
     // ####################################################################
 
-    protected override PowerItem CreatePowerItem() {
+    public override PowerItem CreatePowerItem()
+    {
         return new PowerPushButton
         {
             TriggerType = PowerTrigger.TriggerTypes.Motion,

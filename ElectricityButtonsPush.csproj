@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Harmony\BlockButtonPush.cs" />
     <Compile Include="Harmony\ElectricityButtonsPush.cs" />
+    <Compile Include="Harmony\NetPkgPushButton.cs" />
     <Compile Include="Harmony\PowerPushButton.cs" />
     <Compile Include="Harmony\ReturnVariantHelper.cs" />
     <Compile Include="Harmony\TileEntityButtonPush.cs" />

@@ -16,7 +16,7 @@ public class BlockButtonPush : BlockPowered
     // See `GetBlockActivationCommands` where options get enabled/disabled
     // ####################################################################
 
-    private readonly BlockActivationCommand[] cmds = new BlockActivationCommand[3]
+    private new readonly BlockActivationCommand[] cmds = new BlockActivationCommand[3]
     {
         new BlockActivationCommand("light", "electric_switch", true),
         new BlockActivationCommand("options", "tool", true),
@@ -99,15 +99,6 @@ public class BlockButtonPush : BlockPowered
         int clrIdx, Vector3i position,
         BlockValue old_bv, BlockValue new_bv)
     {
-        // Process the toggle event on the server (dispatch to circuit root 
-        if (ConnectionManager.Instance.IsServer && world.GetTileEntity(clrIdx, position) is TileEntityPowered te)
-        {
-            var root_pwr = (te.GetPowerItem() as PowerPushButton)?.GetCurcuitRoot();
-            var root_te = root_pwr?.TileEntity as TileEntityPoweredTrigger;
-            if ((old_bv.meta & 0b100) != (new_bv.meta & 0b100))
-                // Just toggle state of root tile entity
-                root_te.IsTriggered = !root_te.IsTriggered;
-        }
         // A change may also indicate that the whole block was replaced
         base.OnBlockValueChanged(world, chunk, clrIdx, position, old_bv, new_bv);
         // Update visual state when server syncs to clients
@@ -123,7 +114,7 @@ public class BlockButtonPush : BlockPowered
     public override bool OnBlockActivated(
         string cmd, WorldBase world,
         int clrIdx, Vector3i position,
-        BlockValue bv, EntityAlive player)
+        BlockValue bv, EntityPlayerLocal player)
     {
         // Check for master block
         if (bv.ischild)
@@ -136,9 +127,15 @@ public class BlockButtonPush : BlockPowered
         {
             // toggle local trigger flag. Server will properly
             // dispatch event to the circuit root when received
-            bv.meta ^= 0b100;
-            // Broadcast changes to server
-            world.SetBlockRPC(clrIdx, position, bv);
+            if (ConnectionManager.Instance.IsClient)
+            {
+                ConnectionManager.Instance.SendToServer(NetPackageManager
+                    .GetPackage<NetPkgPushButton>().Setup(position));
+            }
+            else
+            {
+                ElectricityPushButon.TriggerPushButton(position);
+            }
         }
         else if (cmd == "options")
         {

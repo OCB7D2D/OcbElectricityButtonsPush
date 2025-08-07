@@ -1,6 +1,6 @@
 ﻿<configs patcher-version="4">
 	<modif condition="UndeadLegacy_CoreModule">
-		<include path="items.a20.ulm.xml"/>
+    <modinc path="items.a20.ulm.xml"/>
 	</modif>
 	<modelsif condition="DarknessFallsCore">
 		<csv xpath="/items/item/property[@class]/property[@name='Create_item' and contains(@value, 'electricianSkillMagazine')]/@value" op="add">ocbPushButtonVariantHelper</csv>

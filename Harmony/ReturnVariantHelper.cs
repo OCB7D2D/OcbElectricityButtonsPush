@@ -16,7 +16,7 @@ public static class UpgradeVariantHelperPatch
         {
             // Check if the block has `ReturnVariantHelper` set
             if (Block.list[stack.itemValue.type].Properties.Values
-                .TryGetString("ReturnVariantHelper", out string variant))
+                .TryGetValue("ReturnVariantHelper", out string variant))
             {
                 // Upgrade `itemValue` to variant helper block type
                 if (Block.GetBlockByName(variant) is Block helper)

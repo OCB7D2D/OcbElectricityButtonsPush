@@ -1,4 +1,4 @@
-# OCB Electricity Push Button Circuits - 7 Days to Die (A21) Addon
+# OCB Electricity Push Button Circuits - 7 Days to Die (V2.1) Addon
 
 This mod is not EAC compatible, so you need to turn EAC off!  
 Otherwise it should work on linux and also via vortex mod manager.  
@@ -24,11 +24,15 @@ need to put them in sequence, all belong to the same root trigger.
 
 ### Download and Install
 
-Simply [download here from GitHub][1] and put into your A20 Mods folder:
+Simply [download here from GitHub][1] and put into your Mods folder:
 
 - https://github.com/OCB7D2D/ElectricityButtonsPush/archive/master.zip
 
 ## Changelog
+
+### Version 0.9.0
+
+- Update compatibility for 7D2D V2.1 stable
 
 ### Version 0.8.1
 
